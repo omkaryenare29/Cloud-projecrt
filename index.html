@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Computer Department | Syllabus & Forms</title>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+            --border: #e2e8f0;
+            --accent: #2563eb; /* blue-600 */
+            --accent-600: #2563eb;
+            --accent-700: #1d4ed8;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+            --radius: 12px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --container: 1100px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: linear-gradient(180deg, #f1f5f9 0%, #f8fafc 120%);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 var(--space-16);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(12px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-16); }
+        .branding { padding: var(--space-12) 0; }
+        .branding h1 { margin: 0; font-size: 22px; letter-spacing: 0.2px; }
+        .branding p { margin: 2px 0 0 0; color: var(--muted); font-size: 13px; }
+
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--space-12); }
+        nav a {
+            display: inline-block;
+            padding: 10px 12px;
+            border-radius: 999px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid transparent;
+        }
+        nav a:hover { background: #eef2ff; border-color: #e0e7ff; }
+        nav a:focus { outline: 3px solid #bfdbfe; outline-offset: 2px; }
+        nav a.active { color: #0b2c8a; background: #dbeafe; border-color: #bfdbfe; }
+
+        main { padding: var(--space-24) 0 var(--space-32); }
+        section { padding: var(--space-24) 0; scroll-margin-top: 84px; }
+        section h2 { margin: 0 0 var(--space-16) 0; font-size: 22px; }
+        .lead { color: var(--muted); max-width: 60ch; }
+
+        .note {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: var(--space-16);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            font-size: 14px;
+        }
+        .note .actions { display: flex; align-items: center; gap: 8px; position: absolute; top: 10px; right: 10px; }
+        .btn-icon {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .btn-icon:hover { background: #e2e8f0; }
+        .btn-icon:focus { outline: 3px solid #bfdbfe; outline-offset: 2px; }
+
+        .grid {
+            display: grid;
+            gap: var(--space-16);
+        }
+        .grid-2 {
+            grid-template-columns: 1fr;
+        }
+        .grid-3 {
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 720px) {
+            .grid-2 { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: transform 160ms ease, box-shadow 160ms ease;
+            padding: var(--space-16);
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .card h3 { margin: 0 0 8px 0; font-size: 18px; }
+        .card p, .card li { color: var(--muted); font-size: 14px; }
+        .card ul { margin: 8px 0 16px; padding-left: 18px; }
+
+        .actions-row { display: flex; flex-wrap: wrap; gap: 10px; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .btn.primary { background: var(--accent); color: white; border-color: transparent; }
+        .btn.primary:hover { background: var(--accent-700); }
+        .btn:hover { background: #eef2f7; }
+        .btn:focus { outline: 3px solid #bfdbfe; outline-offset: 2px; }
+
+        .tile {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-16);
+            display: grid;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+        .tile h3 { margin: 0; font-size: 16px; }
+        .tile .actions-row { justify-content: flex-start; }
+
+        form { display: grid; gap: 12px; max-width: 640px; }
+        label { font-size: 14px; }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            font-size: 14px;
+        }
+        textarea { min-height: 120px; resize: vertical; }
+        .helper { color: var(--muted); font-size: 13px; }
+        .error { color: var(--danger); font-size: 13px; }
+
+        footer {
+            margin-top: var(--space-32);
+            padding: var(--space-16) 0 var(--space-24);
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: 14px;
+        }
+        .tiny { font-size: 12px; color: #64748b; margin-top: 6px; }
+
+        /* Utilities */
+        .muted { color: var(--muted); }
+        .mt-8 { margin-top: var(--space-8); }
+        .mt-16 { margin-top: var(--space-16); }
+        .mt-24 { margin-top: var(--space-24); }
+        .mb-0 { margin-bottom: 0; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 1px, 1px); white-space: nowrap; border: 0; }
+    </style>
+</head>
+<body>
+    <header role="banner" aria-label="Page header">
+        <div class="container header-inner">
+            <div class="branding">
+                <h1>Computer Department</h1>
+                <p>Curriculum resources and important documents</p>
+            </div>
+            <nav aria-label="Primary" role="navigation">
+                <ul>
+                    <li><a href="#overview" class="nav-link" aria-label="Go to Overview">Overview</a></li>
+                    <li><a href="#syllabus" class="nav-link" aria-label="Go to Syllabus">Syllabus</a></li>
+                    <li><a href="#documents" class="nav-link" aria-label="Go to Documents">Documents</a></li>
+                    <li><a href="#contact" class="nav-link" aria-label="Go to Contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section id="overview" aria-labelledby="overview-title">
+            <div class="container">
+                <h2 id="overview-title">Overview</h2>
+                <p class="lead">Welcome to the Computer Department Syllabus & Common Forms page. Use this page to access the latest program syllabi and important department documents.</p>
+            </div>
+        </section>
+
+        <section id="syllabus" aria-labelledby="syllabus-title">
+            <div class="container">
+                <h2 id="syllabus-title">Syllabus</h2>
+
+                <div class="grid grid-2 mt-16">
+                    <article class="card" aria-labelledby="fy-title">
+                        <h3 id="fy-title">First Year (FY)</h3>
+                        <ul>
+                            <li>Core subjects overview</li>
+                            <li>Foundational labs and tutorials</li>
+                            <li>Credit structure and assessment</li>
+                        </ul>
+                        <div class="actions-row">
+                            <a class="btn primary" href="https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/Comp-syllabi.pdf" data-key="syllabus.fy.view" aria-label="View FY syllabus PDF">View PDF</a><!-- data-href: syllabus.fy.view -->
+                        </div>
+                    </article>
+
+                    <article class="card" aria-labelledby="sy-title">
+                        <h3 id="sy-title">Second Year (SY)</h3>
+                        <ul>
+                            <li>Intermediate core and elective subjects</li>
+                            <li>Laboratory courses and mini-projects</li>
+                            <li>Credits and prerequisites</li>
+                        </ul>
+                        <div class="actions-row">
+                            <a class="btn primary" href="https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/SYBTech-syllabus-2024-28.pdf" data-key="syllabus.sy.view" aria-label="View SY syllabus PDF">View PDF</a><!-- data-href: syllabus.sy.view -->
+                        </div>
+                    </article>
+
+                    <article class="card" aria-labelledby="ty-title">
+                        <h3 id="ty-title">Third Year (TY)</h3>
+                        <ul>
+                            <li>Advanced subjects and labs</li>
+                            <li>Seminars, term work, internal assessment</li>
+                            <li>Credit allocation and exam scheme</li>
+                        </ul>
+                        <div class="actions-row">
+                            <a class="btn primary" href="https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/TY-syllabus-25-26(Regulations2023).pdf" data-key="syllabus.ty.view" aria-label="View TY syllabus PDF">View PDF</a><!-- data-href: syllabus.ty.view -->
+                        </div>
+                    </article>
+
+                    <article class="card" aria-labelledby="btech-title">
+                        <h3 id="btech-title">Bachelor of Technology (BTech)</h3>
+                        <ul>
+                            <li>Program outcomes and specialization tracks</li>
+                            <li>Major projects and internships</li>
+                            <li>Credit distribution and evaluation</li>
+                        </ul>
+                        <div class="actions-row">
+                            <a class="btn primary" href="https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/final-btech-syllabus-2025-26.pdf" data-key="syllabus.btech.view" aria-label="View BTech syllabus PDF">View PDF</a><!-- data-href: syllabus.btech.view -->
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="documents" aria-labelledby="documents-title">
+            <div class="container">
+                <h2 id="documents-title">Documents</h2>
+                
+
+                <div class="grid grid-3 mt-16">
+                    <article class="tile" aria-labelledby="calendar-title">
+                        <h3 id="calendar-title">Academic Calendar (PDF)</h3>
+                        <div class="actions-row">
+                            <a class="btn primary" href="https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/academic-calender.pdf" data-key="documents.academicCalendar.view" aria-label="View Academic Calendar PDF">View PDF</a><!-- data-href: documents.academicCalendar.view -->
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 id="contact-title">Contact</h2>
+                <address class="helper">
+                    Computer Department Office<br/>
+                    Main Academic Building, 2nd Floor<br/>
+                    College Road, City, State 000000
+                </address>
+                <p class="helper">Email us at <a href="mailto:computer.dept@example.edu" aria-label="Send email to Computer Department">computer.dept@example.edu</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div>© <span id="year"></span> Computer Department</div>
+            <div class="tiny">Single-page static site. Replace placeholders with actual links.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Centralized URL Map: update these when real links are available
+        const PDF_LINKS = {
+            syllabus: {
+                fy: { view: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/Comp-syllabi.pdf', download: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/Comp-syllabi.pdf' },
+                sy: { view: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/SYBTech-syllabus-2024-28.pdf', download: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/SYBTech-syllabus-2024-28.pdf' },
+                ty: { view: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/TY-syllabus-25-26(Regulations2023).pdf', download: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/TY-syllabus-25-26(Regulations2023).pdf' },
+                btech: { view: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/final-btech-syllabus-2025-26.pdf', download: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/final-btech-syllabus-2025-26.pdf' }
+            },
+            documents: {
+                academicCalendar: { view: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/academic-calender.pdf', download: 'https://omkar-bkt-297.s3.ap-south-1.amazonaws.com/academic-calender.pdf' }
+            }
+        };
+
+        // Helper to get value by path like "forms.leave.view"
+        function getByPath(obj, path) {
+            return path.split('.').reduce((acc, key) => acc && acc[key] !== undefined ? acc[key] : undefined, obj);
+        }
+
+        // Apply URL map to all anchors with data-key
+        function applyPdfLinks() {
+            document.querySelectorAll('a[data-key]').forEach(a => {
+                const key = a.getAttribute('data-key');
+                const url = getByPath(PDF_LINKS, key);
+                if (typeof url === 'string') {
+                    a.setAttribute('href', url);
+                }
+            });
+        }
+
+        // Sticky nav active link highlighting
+        function setupSectionObserver() {
+            const links = Array.from(document.querySelectorAll('.nav-link'));
+            const byId = id => links.find(l => l.getAttribute('href') === '#' + id);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const link = byId(entry.target.id);
+                    if (!link) return;
+                    if (entry.isIntersecting) {
+                        links.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-60% 0px -38% 0px', threshold: [0, 1] });
+
+            document.querySelectorAll('main section').forEach(sec => observer.observe(sec));
+        }
+
+        // (Instruction note and copy URL map removed)
+
+        // (Feedback form removed)
+
+        function setupYear() {
+            const y = document.getElementById('year');
+            if (y) y.textContent = new Date().getFullYear();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyPdfLinks();
+            setupSectionObserver();
+            
+            setupYear();
+        });
+    </script>
+</body>
+</html>
+
+
